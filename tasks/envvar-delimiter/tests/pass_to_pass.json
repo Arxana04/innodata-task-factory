@@ -1,0 +1,5 @@
+[
+  "tests/test_options.py::test_multiple_envvar",
+  "tests/test_options.py::test_envvar_container_type",
+  "tests/test_options.py::test_empty_envvar"
+]

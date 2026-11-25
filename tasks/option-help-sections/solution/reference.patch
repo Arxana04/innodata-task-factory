@@ -1,0 +1,47 @@
+diff --git a/src/click/core.py b/src/click/core.py
+--- a/src/click/core.py
++++ b/src/click/core.py
+@@ -1295,15 +1295,19 @@
+ 
+     def format_options(self, ctx: Context, formatter: HelpFormatter) -> None:
+         """Writes all the options into the formatter if they exist."""
+-        opts = []
++        default_heading = _("Options")
++        groups: dict[str, list[tuple[str, str]]] = {default_heading: []}
+         for param in self.get_params(ctx):
+-            rv = param.get_help_record(ctx)
+-            if rv is not None and not isinstance(param, Argument):
+-                opts.append(rv)
+-
+-        if opts:
+-            with formatter.section(_("Options")):
+-                formatter.write_dl(opts)
++            record = param.get_help_record(ctx)
++            if record is None or isinstance(param, Argument):
++                continue
++            heading = param.help_group if isinstance(param, Option) else None
++            groups.setdefault(heading or default_heading, []).append(record)
++
++        for heading, records in groups.items():
++            if records:
++                with formatter.section(heading):
++                    formatter.write_dl(records)
+ 
+     def format_arguments(self, ctx: Context, formatter: HelpFormatter) -> None:
+         """Writes all arguments into the formatter, if at least one is documented.
+@@ -2999,6 +3003,7 @@
+         show_choices: bool = True,
+         show_envvar: bool = False,
+         deprecated: bool | str = False,
++        help_group: str | None = None,
+         **attrs: t.Any,
+     ) -> None:
+         super().__init__(
+@@ -3027,6 +3032,7 @@
+         self.prompt_required = prompt_required
+         self.hide_input = hide_input
+         self.hidden = hidden
++        self.help_group = help_group or None
+ 
+         # Phase 2: flag-kind inference.
+         self.is_flag, self._flag_needs_value = self._infer_flag_kind(

@@ -1,0 +1,5 @@
+[
+  "tests/test_formatting.py::test_wrapping_long_options_strings",
+  "tests/test_arguments.py::test_argument_help",
+  "tests/test_arguments.py::test_argument_help_options_only_no_arguments_section"
+]

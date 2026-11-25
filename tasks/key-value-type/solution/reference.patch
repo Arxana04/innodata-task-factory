@@ -1,0 +1,47 @@
+diff --git a/src/click/types.py b/src/click/types.py
+--- a/src/click/types.py
++++ b/src/click/types.py
+@@ -513,6 +513,32 @@
+             matched = (c for c in str_choices if c.lower().startswith(incomplete))
+ 
+         return [CompletionItem(c) for c in matched]
++
++
++class KeyValue(ParamType[tuple[str, str]]):
++    """Convert a KEY=VALUE parameter to a pair of strings."""
++
++    name = "key=value"
++
++    def get_metavar(self, param: Parameter, ctx: Context) -> str:
++        return "KEY=VALUE"
++
++    def convert(
++        self, value: t.Any, param: Parameter | None, ctx: Context | None
++    ) -> tuple[str, str]:
++        if isinstance(value, str):
++            key, separator, item = value.partition("=")
++            if separator and key.strip():
++                return key, item
++        elif (
++            isinstance(value, tuple)
++            and len(value) == 2
++            and all(isinstance(part, str) for part in value)
++            and value[0].strip()
++        ):
++            return value
++
++        self.fail(_("Expected KEY=VALUE with a non-empty key."), param, ctx)
+ 
+ 
+ class DateTimeInfoDict(ParamTypeInfoDict):
+diff --git a/src/click/__init__.py b/src/click/__init__.py
+--- a/src/click/__init__.py
++++ b/src/click/__init__.py
+@@ -61,6 +61,7 @@
+ from .types import FloatRange as FloatRange
+ from .types import INT as INT
+ from .types import IntRange as IntRange
++from .types import KeyValue as KeyValue
+ from .types import ParamType as ParamType
+ from .types import Path as Path
+ from .types import STRING as STRING

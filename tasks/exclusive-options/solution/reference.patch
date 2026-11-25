@@ -1,0 +1,55 @@
+diff --git a/src/click/core.py b/src/click/core.py
+--- a/src/click/core.py
++++ b/src/click/core.py
+@@ -1047,6 +1047,8 @@
+         no_args_is_help: bool = False,
+         hidden: bool = False,
+         deprecated: bool | str = False,
++        *,
++        mutually_exclusive: cabc.Iterable[cabc.Iterable[str]] = (),
+     ) -> None:
+         #: the name the command thinks it has.  Upon registering a command
+         #: on a :class:`Group` the group will default the command name
+@@ -1067,6 +1069,15 @@
+         #: should show up in the help page and execute.  Eager parameters
+         #: will automatically be handled before non eager ones.
+         self.params = params or []
++        options = {param.name: param for param in self.params if isinstance(param, Option)}
++        self._exclusive_options: list[tuple[Option, ...]] = []
++        for group in mutually_exclusive:
++            names = tuple(group)
++            if len(names) < 2 or len(set(names)) != len(names):
++                raise ValueError("An exclusive group needs at least two distinct option names.")
++            if any(name not in options for name in names):
++                raise ValueError("Exclusive groups must name declared options.")
++            self._exclusive_options.append(tuple(options[name] for name in names))
+         self.help = help
+         self.epilog = epilog
+         self.options_metavar = options_metavar
+@@ -1372,7 +1383,7 @@
+         opts, args, param_order = parser.parse_args(args=args)
+ 
+         for param in iter_params_for_processing(param_order, self.get_params(ctx)):
+-            _, args = param.handle_parse_result(ctx, opts, args)
++            _value, args = param.handle_parse_result(ctx, opts, args)
+ 
+         # We now have all parameters' values into `ctx.params`, but the data may contain
+         # the `UNSET` sentinel.
+@@ -1392,6 +1403,17 @@
+                     len(args),
+                 ).format(args=" ".join(map(str, args)))
+             )
++
++        if not ctx.resilient_parsing:
++            for group in self._exclusive_options:
++                flags = [
++                    option.opts[0] for option in group
++                    if option.name is not None
++                    and ctx.get_parameter_source(option.name) is ParameterSource.COMMANDLINE
++                ]
++                if len(flags) > 1:
++                    message = _("Options {flags} are mutually exclusive.")
++                    ctx.fail(message.format(flags=", ".join(flags)))
+ 
+         ctx.args = args
+         ctx._opt_prefixes.update(parser._opt_prefixes)

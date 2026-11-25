@@ -1,0 +1,82 @@
+[
+  {
+    "task": "datetime-bounds",
+    "agent": "nop",
+    "reward": 0.0,
+    "expected": 0.0,
+    "passed": true,
+    "logs": "datetime-bounds/nop"
+  },
+  {
+    "task": "datetime-bounds",
+    "agent": "oracle",
+    "reward": 1.0,
+    "expected": 1.0,
+    "passed": true,
+    "logs": "datetime-bounds/oracle"
+  },
+  {
+    "task": "envvar-delimiter",
+    "agent": "nop",
+    "reward": 0.0,
+    "expected": 0.0,
+    "passed": true,
+    "logs": "envvar-delimiter/nop"
+  },
+  {
+    "task": "envvar-delimiter",
+    "agent": "oracle",
+    "reward": 1.0,
+    "expected": 1.0,
+    "passed": true,
+    "logs": "envvar-delimiter/oracle"
+  },
+  {
+    "task": "exclusive-options",
+    "agent": "nop",
+    "reward": 0.0,
+    "expected": 0.0,
+    "passed": true,
+    "logs": "exclusive-options/nop"
+  },
+  {
+    "task": "exclusive-options",
+    "agent": "oracle",
+    "reward": 1.0,
+    "expected": 1.0,
+    "passed": true,
+    "logs": "exclusive-options/oracle"
+  },
+  {
+    "task": "key-value-type",
+    "agent": "nop",
+    "reward": 0.0,
+    "expected": 0.0,
+    "passed": true,
+    "logs": "key-value-type/nop"
+  },
+  {
+    "task": "key-value-type",
+    "agent": "oracle",
+    "reward": 1.0,
+    "expected": 1.0,
+    "passed": true,
+    "logs": "key-value-type/oracle"
+  },
+  {
+    "task": "option-help-sections",
+    "agent": "nop",
+    "reward": 0.0,
+    "expected": 0.0,
+    "passed": true,
+    "logs": "option-help-sections/nop"
+  },
+  {
+    "task": "option-help-sections",
+    "agent": "oracle",
+    "reward": 1.0,
+    "expected": 1.0,
+    "passed": true,
+    "logs": "option-help-sections/oracle"
+  }
+]

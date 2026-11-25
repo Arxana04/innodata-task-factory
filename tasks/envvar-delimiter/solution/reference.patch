@@ -1,0 +1,36 @@
+diff --git a/src/click/core.py b/src/click/core.py
+--- a/src/click/core.py
++++ b/src/click/core.py
+@@ -2999,6 +2999,7 @@
+         show_choices: bool = True,
+         show_envvar: bool = False,
+         deprecated: bool | str = False,
++        envvar_delimiter: str | None = None,
+         **attrs: t.Any,
+     ) -> None:
+         super().__init__(
+@@ -3056,6 +3057,12 @@
+ 
+         # Phase 5: validate. Raises on illegal kwarg combinations.
+         self._validate(prompt, deprecated)
++        if envvar_delimiter is not None:
++            if not envvar_delimiter:
++                raise ValueError("envvar_delimiter must not be empty.")
++            if self.is_flag or self.count or (not self.multiple and self.nargs == 1):
++                raise ValueError("envvar_delimiter requires a multi-value option.")
++        self.envvar_delimiter = envvar_delimiter
+ 
+     @property
+     def is_bool_flag(self) -> bool:
+@@ -3616,7 +3623,10 @@
+         # Split the envvar value if it is allowed to be repeated.
+         value_depth = (self.nargs != 1) + bool(self.multiple)
+         if value_depth > 0:
+-            multi_rv = self.type.split_envvar_value(rv)
++            if self.envvar_delimiter is None:
++                multi_rv = self.type.split_envvar_value(rv)
++            else:
++                multi_rv = rv.split(self.envvar_delimiter)
+             if self.multiple and self.nargs != 1:
+                 multi_rv = batch(multi_rv, self.nargs)  # type: ignore[assignment]
+ 

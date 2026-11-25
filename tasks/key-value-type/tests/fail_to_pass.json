@@ -1,0 +1,5 @@
+[
+  "test_feature.py::test_multiple_pairs_are_converted_in_order",
+  "test_feature.py::test_accepts_preconverted_pairs_and_keeps_whitespace",
+  "test_feature.py::test_bad_pairs_use_click_parameter_errors"
+]

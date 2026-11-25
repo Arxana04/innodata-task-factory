@@ -1,0 +1,5 @@
+[
+  "tests/test_options.py::test_nargs_tup_composite_mult",
+  "tests/test_types/test_ParamType.py",
+  "tests/test_types/test_convert_type.py"
+]

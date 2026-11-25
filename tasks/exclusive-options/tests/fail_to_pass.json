@@ -1,0 +1,5 @@
+[
+  "test_feature.py::test_each_group_rejects_conflicts_before_command_callback",
+  "test_feature.py::test_defaults_and_env_do_not_conflict_and_help_still_works",
+  "test_feature.py::test_invalid_declarations_fail_at_construction"
+]

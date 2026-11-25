@@ -1,0 +1,5 @@
+[
+  "test_feature.py::test_literal_delimiter_keeps_spaces_and_empty_fields",
+  "test_feature.py::test_auto_envvar_feeds_composite_parser_and_cli_still_wins",
+  "test_feature.py::test_bad_delimiter_configurations_are_rejected"
+]

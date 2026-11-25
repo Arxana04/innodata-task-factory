@@ -1,0 +1,64 @@
+diff --git a/src/click/types.py b/src/click/types.py
+--- a/src/click/types.py
++++ b/src/click/types.py
+@@ -544,7 +544,22 @@
+ 
+     formats: cabc.Sequence[str]
+ 
+-    def __init__(self, formats: cabc.Sequence[str] | None = None):
++    def __init__(
++        self,
++        formats: cabc.Sequence[str] | None = None,
++        *,
++        min_value: datetime | None = None,
++        max_value: datetime | None = None,
++    ) -> None:
++        if min_value is not None and max_value is not None:
++            try:
++                backwards = min_value > max_value
++            except TypeError as error:
++                raise ValueError("DateTime bounds must agree on timezone awareness.") from error
++            if backwards:
++                raise ValueError("DateTime minimum cannot exceed its maximum.")
++        self.min_value = min_value
++        self.max_value = max_value
+         self.formats = formats or [
+             "%Y-%m-%d",
+             "%Y-%m-%dT%H:%M:%S",
+@@ -567,13 +582,13 @@
+         self, value: t.Any, param: Parameter | None, ctx: Context | None
+     ) -> datetime:
+         if isinstance(value, datetime):
+-            return value
++            return self._check_bounds(value, param, ctx)
+ 
+         for format in self.formats:
+             converted = self._try_to_convert_date(value, format)
+ 
+             if converted is not None:
+-                return converted
++                return self._check_bounds(converted, param, ctx)
+ 
+         formats_str = ", ".join(map(repr, self.formats))
+         self.fail(
+@@ -585,6 +600,20 @@
+             param,
+             ctx,
+         )
++
++    def _check_bounds(
++        self, value: datetime, param: Parameter | None, ctx: Context | None
++    ) -> datetime:
++        try:
++            too_early = self.min_value is not None and value < self.min_value
++            too_late = self.max_value is not None and value > self.max_value
++        except TypeError:
++            self.fail(_("Value and bound must agree on timezone awareness."), param, ctx)
++        if too_early:
++            self.fail(_("Value must be on or after {bound}.").format(bound=self.min_value), param, ctx)
++        if too_late:
++            self.fail(_("Value must be on or before {bound}.").format(bound=self.max_value), param, ctx)
++        return value
+ 
+     def __repr__(self) -> str:
+         return "DateTime"

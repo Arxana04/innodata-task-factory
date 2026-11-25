@@ -1,0 +1,4 @@
+[
+  "test_feature.py::test_default_and_custom_sections_keep_option_order",
+  "test_feature.py::test_hidden_and_positional_parameters_are_not_moved_to_groups"
+]
