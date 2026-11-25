@@ -1,0 +1,13 @@
+{
+    "job_name": "2026-11-26__01-19-37",
+    "jobs_dir": "/Users/mahipatni/Antigravity/innodata-task-factory/results/harbor/key-value-type/oracle",
+    "environment": {
+        "type": "docker",
+        "delete": false
+    },
+    "tasks": [
+        {
+            "path": "/Users/mahipatni/Antigravity/innodata-task-factory/tasks/key-value-type"
+        }
+    ]
+}

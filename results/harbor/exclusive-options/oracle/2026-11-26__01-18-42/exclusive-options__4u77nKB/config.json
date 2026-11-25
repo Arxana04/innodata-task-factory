@@ -1,0 +1,12 @@
+{
+    "task": {
+        "path": "/Users/mahipatni/Antigravity/innodata-task-factory/tasks/exclusive-options"
+    },
+    "trial_name": "exclusive-options__4u77nKB",
+    "trials_dir": "/Users/mahipatni/Antigravity/innodata-task-factory/results/harbor/exclusive-options/oracle/2026-11-26__01-18-42",
+    "environment": {
+        "type": "docker",
+        "delete": false
+    },
+    "job_id": "1065be8f-88ea-469d-a148-e7159d03476a"
+}

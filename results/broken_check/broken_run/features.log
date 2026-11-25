@@ -1,0 +1,67 @@
+F.F                                                                      [100%]
+=================================== FAILURES ===================================
+__________________ test_bounds_are_inclusive_for_cli_strings ___________________
+
+    def test_bounds_are_inclusive_for_cli_strings():
+        @click.command()
+        @click.option("--day", type=click.DateTime(
+            min_value=datetime(2030, 1, 2), max_value=datetime(2030, 1, 4)
+        ))
+        def cli(day):
+            click.echo(day.date().isoformat())
+    
+        runner = CliRunner()
+        for day in ("2030-01-02", "2030-01-03", "2030-01-04"):
+            result = runner.invoke(cli, ["--day", day])
+>           assert result.exit_code == 0, result.output
+E           AssertionError: Usage: cli [OPTIONS]
+E             Try 'cli --help' for help.
+E             
+E             Error: Invalid value for '--day': Value must be on or after 2030-01-02 00:00:00.
+E             
+E           assert 2 == 0
+E            +  where 2 = <Result SystemExit(2)>.exit_code
+
+/Users/mahipatni/Antigravity/innodata-task-factory/tasks/datetime-bounds/tests/test_feature.py:19: AssertionError
+_____________ test_invalid_bounds_and_timezone_mismatch_are_clear ______________
+
+    def test_invalid_bounds_and_timezone_mismatch_are_clear():
+        with pytest.raises(ValueError):
+            click.DateTime(min_value=datetime(2030, 1, 4), max_value=datetime(2030, 1, 2))
+        aware = datetime(2030, 1, 2, tzinfo=timezone.utc)
+        with pytest.raises(ValueError):
+            click.DateTime(min_value=aware, max_value=datetime(2030, 1, 4))
+        bounded = click.DateTime(min_value=aware)
+        with pytest.raises(click.BadParameter, match="timezone"):
+            bounded.convert("2030-01-03", None, None)
+>       assert bounded.convert(aware, None, None) == aware
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+/Users/mahipatni/Antigravity/innodata-task-factory/tasks/datetime-bounds/tests/test_feature.py:41: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/click/types.py:585: in convert
+    return self._check_bounds(value, param, ctx)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/click/types.py:613: in _check_bounds
+    self.fail(_("Value must be on or after {bound}.").format(bound=self.min_value), param, ctx)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = DateTime
+message = 'Value must be on or after 2030-01-02 00:00:00+00:00.', param = None
+ctx = None
+
+    def fail(
+        self,
+        message: str,
+        param: Parameter | None = None,
+        ctx: Context | None = None,
+    ) -> t.NoReturn:
+        """Helper method to fail with an invalid value message."""
+>       raise BadParameter(message, ctx=ctx, param=param)
+E       click.exceptions.BadParameter: Value must be on or after 2030-01-02 00:00:00+00:00.
+
+src/click/types.py:222: BadParameter
+=========================== short test summary info ============================
+FAILED ../../../../../../../../Users/mahipatni/Antigravity/innodata-task-factory/tasks/datetime-bounds/tests/test_feature.py::test_bounds_are_inclusive_for_cli_strings
+FAILED ../../../../../../../../Users/mahipatni/Antigravity/innodata-task-factory/tasks/datetime-bounds/tests/test_feature.py::test_invalid_bounds_and_timezone_mismatch_are_clear
+2 failed, 1 passed in 0.05s

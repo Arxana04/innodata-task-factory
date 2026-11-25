@@ -1,0 +1,123 @@
+FFF                                                                      [100%]
+=================================== FAILURES ===================================
+__________ test_each_group_rejects_conflicts_before_command_callback ___________
+
+    def test_each_group_rejects_conflicts_before_command_callback():
+        runner = CliRunner()
+>       cli = make_cli()
+              ^^^^^^^^^^
+
+/tests/test_feature.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/tests/test_feature.py:7: in make_cli
+    @click.command(mutually_exclusive=[("json", "text"), ("brief", "wide")])
+     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = <function make_cli.<locals>.cli at 0xf963100b9760>
+
+    def decorator(f: _AnyCallable) -> CmdType:
+        if isinstance(f, Command):
+            raise TypeError("Attempted to convert a callback into a command twice.")
+    
+        attr_params = attrs.pop("params", None)
+        params = attr_params if attr_params is not None else []
+    
+        try:
+            decorator_params = f.__click_params__  # type: ignore
+        except AttributeError:
+            pass
+        else:
+            del f.__click_params__  # type: ignore
+            params.extend(reversed(decorator_params))
+    
+        if attrs.get("help") is None:
+            attrs["help"] = f.__doc__
+    
+        if t.TYPE_CHECKING:
+            assert cls is not None
+            assert not callable(name)
+    
+        if name is not None:
+            cmd_name = name
+        else:
+            cmd_name = f.__name__.lower().replace("_", "-")
+            cmd_left, sep, suffix = cmd_name.rpartition("-")
+    
+            if sep and suffix in {"command", "cmd", "group", "grp"}:
+                cmd_name = cmd_left
+    
+>       cmd = cls(name=cmd_name, callback=f, params=params, **attrs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: Command.__init__() got an unexpected keyword argument 'mutually_exclusive'
+
+src/click/decorators.py:248: TypeError
+__________ test_defaults_and_env_do_not_conflict_and_help_still_works __________
+
+    def test_defaults_and_env_do_not_conflict_and_help_still_works():
+        runner = CliRunner()
+>       cli = make_cli()
+              ^^^^^^^^^^
+
+/tests/test_feature.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/tests/test_feature.py:7: in make_cli
+    @click.command(mutually_exclusive=[("json", "text"), ("brief", "wide")])
+     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+f = <function make_cli.<locals>.cli at 0xf963100b9b20>
+
+    def decorator(f: _AnyCallable) -> CmdType:
+        if isinstance(f, Command):
+            raise TypeError("Attempted to convert a callback into a command twice.")
+    
+        attr_params = attrs.pop("params", None)
+        params = attr_params if attr_params is not None else []
+    
+        try:
+            decorator_params = f.__click_params__  # type: ignore
+        except AttributeError:
+            pass
+        else:
+            del f.__click_params__  # type: ignore
+            params.extend(reversed(decorator_params))
+    
+        if attrs.get("help") is None:
+            attrs["help"] = f.__doc__
+    
+        if t.TYPE_CHECKING:
+            assert cls is not None
+            assert not callable(name)
+    
+        if name is not None:
+            cmd_name = name
+        else:
+            cmd_name = f.__name__.lower().replace("_", "-")
+            cmd_left, sep, suffix = cmd_name.rpartition("-")
+    
+            if sep and suffix in {"command", "cmd", "group", "grp"}:
+                cmd_name = cmd_left
+    
+>       cmd = cls(name=cmd_name, callback=f, params=params, **attrs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: Command.__init__() got an unexpected keyword argument 'mutually_exclusive'
+
+src/click/decorators.py:248: TypeError
+________________ test_invalid_declarations_fail_at_construction ________________
+
+    def test_invalid_declarations_fail_at_construction():
+        for group in (("known",), ("known", "known"), ("known", "missing")):
+            with pytest.raises(ValueError):
+>               click.Command(
+                    "demo", params=[click.Option(["--known"])],
+                    mutually_exclusive=[group],
+                )
+E               TypeError: Command.__init__() got an unexpected keyword argument 'mutually_exclusive'
+
+/tests/test_feature.py:45: TypeError
+=========================== short test summary info ============================
+FAILED ../tests/test_feature.py::test_each_group_rejects_conflicts_before_command_callback
+FAILED ../tests/test_feature.py::test_defaults_and_env_do_not_conflict_and_help_still_works
+FAILED ../tests/test_feature.py::test_invalid_declarations_fail_at_construction
+3 failed in 0.04s

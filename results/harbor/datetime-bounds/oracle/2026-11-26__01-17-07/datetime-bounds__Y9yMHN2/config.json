@@ -1,0 +1,12 @@
+{
+    "task": {
+        "path": "/Users/mahipatni/Antigravity/innodata-task-factory/tasks/datetime-bounds"
+    },
+    "trial_name": "datetime-bounds__Y9yMHN2",
+    "trials_dir": "/Users/mahipatni/Antigravity/innodata-task-factory/results/harbor/datetime-bounds/oracle/2026-11-26__01-17-07",
+    "environment": {
+        "type": "docker",
+        "delete": false
+    },
+    "job_id": "9e87655c-1fad-49e2-a5a4-1449534076a3"
+}

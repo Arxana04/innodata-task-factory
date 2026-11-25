@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="3" skipped="0" tests="3" time="0.120" timestamp="2026-11-25T19:47:39.365049+00:00" hostname="8dd72ff97775"><testcase classname="test_feature" name="test_literal_delimiter_keeps_spaces_and_empty_fields" time="0.000"><failure message="TypeError: Parameter.__init__() got an unexpected keyword argument 'envvar_delimiter'">def test_literal_delimiter_keeps_spaces_and_empty_fields():
+        @click.command()
+&gt;       @click.option("--tag", multiple=True, envvar="TAGS", envvar_delimiter="::")
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+/tests/test_feature.py:8: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/click/decorators.py:374: in decorator
+    _param_memo(f, cls(param_decls, **attrs))
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;[AttributeError("'Option' object has no attribute 'name'") raised in repr()] Option object at 0xe0972e4972f0&gt;
+param_decls = ('--tag',), show_default = None, prompt = False
+confirmation_prompt = False, prompt_required = True, hide_input = False
+is_flag = None, flag_value = Sentinel.UNSET, multiple = True, count = False
+allow_from_autoenv = True, type = None, help = None, hidden = False
+show_choices = True, show_envvar = False, deprecated = False
+attrs = {'envvar': 'TAGS', 'envvar_delimiter': '::'}
+
+    def __init__(
+        self,
+        param_decls: cabc.Sequence[str] | None = None,
+        show_default: bool | str | None = None,
+        prompt: bool | str = False,
+        confirmation_prompt: bool | str = False,
+        prompt_required: bool = True,
+        hide_input: bool = False,
+        is_flag: bool | None = None,
+        flag_value: t.Any = UNSET,
+        multiple: bool = False,
+        count: bool = False,
+        allow_from_autoenv: bool = True,
+        type: types.ParamType[t.Any] | t.Any | None = None,
+        help: str | None = None,
+        hidden: bool = False,
+        show_choices: bool = True,
+        show_envvar: bool = False,
+        deprecated: bool | str = False,
+        **attrs: t.Any,
+    ) -&gt; None:
+&gt;       super().__init__(
+            param_decls,
+            type=type,
+            multiple=multiple,
+            deprecated=deprecated,
+            help=help,
+            **attrs,
+        )
+E       TypeError: Parameter.__init__() got an unexpected keyword argument 'envvar_delimiter'
+
+src/click/core.py:3004: TypeError</failure></testcase><testcase classname="test_feature" name="test_auto_envvar_feeds_composite_parser_and_cli_still_wins" time="0.000"><failure message="TypeError: Parameter.__init__() got an unexpected keyword argument 'envvar_delimiter'">def test_auto_envvar_feeds_composite_parser_and_cli_still_wins():
+        @click.command(context_settings={"auto_envvar_prefix": "DEMO"})
+&gt;       @click.option("--pair", type=(str, int), envvar_delimiter="|")
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+/tests/test_feature.py:19: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/click/decorators.py:374: in decorator
+    _param_memo(f, cls(param_decls, **attrs))
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;[AttributeError("'Option' object has no attribute 'name'") raised in repr()] Option object at 0xe0972e1d8320&gt;
+param_decls = ('--pair',), show_default = None, prompt = False
+confirmation_prompt = False, prompt_required = True, hide_input = False
+is_flag = None, flag_value = Sentinel.UNSET, multiple = False, count = False
+allow_from_autoenv = True, type = (&lt;class 'str'&gt;, &lt;class 'int'&gt;), help = None
+hidden = False, show_choices = True, show_envvar = False, deprecated = False
+attrs = {'envvar_delimiter': '|'}
+
+    def __init__(
+        self,
+        param_decls: cabc.Sequence[str] | None = None,
+        show_default: bool | str | None = None,
+        prompt: bool | str = False,
+        confirmation_prompt: bool | str = False,
+        prompt_required: bool = True,
+        hide_input: bool = False,
+        is_flag: bool | None = None,
+        flag_value: t.Any = UNSET,
+        multiple: bool = False,
+        count: bool = False,
+        allow_from_autoenv: bool = True,
+        type: types.ParamType[t.Any] | t.Any | None = None,
+        help: str | None = None,
+        hidden: bool = False,
+        show_choices: bool = True,
+        show_envvar: bool = False,
+        deprecated: bool | str = False,
+        **attrs: t.Any,
+    ) -&gt; None:
+&gt;       super().__init__(
+            param_decls,
+            type=type,
+            multiple=multiple,
+            deprecated=deprecated,
+            help=help,
+            **attrs,
+        )
+E       TypeError: Parameter.__init__() got an unexpected keyword argument 'envvar_delimiter'
+
+src/click/core.py:3004: TypeError</failure></testcase><testcase classname="test_feature" name="test_bad_delimiter_configurations_are_rejected" time="0.000"><failure message="TypeError: Parameter.__init__() got an unexpected keyword argument 'envvar_delimiter'">def test_bad_delimiter_configurations_are_rejected():
+        with pytest.raises(ValueError):
+&gt;           click.Option(["--tag"], multiple=True, envvar_delimiter="")
+
+/tests/test_feature.py:35: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;[AttributeError("'Option' object has no attribute 'name'") raised in repr()] Option object at 0xe0972e1d8fb0&gt;
+param_decls = ['--tag'], show_default = None, prompt = False
+confirmation_prompt = False, prompt_required = True, hide_input = False
+is_flag = None, flag_value = Sentinel.UNSET, multiple = True, count = False
+allow_from_autoenv = True, type = None, help = None, hidden = False
+show_choices = True, show_envvar = False, deprecated = False
+attrs = {'envvar_delimiter': ''}
+
+    def __init__(
+        self,
+        param_decls: cabc.Sequence[str] | None = None,
+        show_default: bool | str | None = None,
+        prompt: bool | str = False,
+        confirmation_prompt: bool | str = False,
+        prompt_required: bool = True,
+        hide_input: bool = False,
+        is_flag: bool | None = None,
+        flag_value: t.Any = UNSET,
+        multiple: bool = False,
+        count: bool = False,
+        allow_from_autoenv: bool = True,
+        type: types.ParamType[t.Any] | t.Any | None = None,
+        help: str | None = None,
+        hidden: bool = False,
+        show_choices: bool = True,
+        show_envvar: bool = False,
+        deprecated: bool | str = False,
+        **attrs: t.Any,
+    ) -&gt; None:
+&gt;       super().__init__(
+            param_decls,
+            type=type,
+            multiple=multiple,
+            deprecated=deprecated,
+            help=help,
+            **attrs,
+        )
+E       TypeError: Parameter.__init__() got an unexpected keyword argument 'envvar_delimiter'
+
+src/click/core.py:3004: TypeError</failure></testcase></testsuite></testsuites>

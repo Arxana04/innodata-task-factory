@@ -1,0 +1,33 @@
+FFF                                                                      [100%]
+=================================== FAILURES ===================================
+__________________ test_bounds_are_inclusive_for_cli_strings ___________________
+
+    def test_bounds_are_inclusive_for_cli_strings():
+        @click.command()
+>       @click.option("--day", type=click.DateTime(
+            min_value=datetime(2030, 1, 2), max_value=datetime(2030, 1, 4)
+        ))
+E       TypeError: DateTime.__init__() got an unexpected keyword argument 'min_value'
+
+/tests/test_feature.py:10: TypeError
+_______________ test_single_bound_applies_to_converted_datetimes _______________
+
+    def test_single_bound_applies_to_converted_datetimes():
+>       lower = click.DateTime(min_value=datetime(2030, 1, 2))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: DateTime.__init__() got an unexpected keyword argument 'min_value'
+
+/tests/test_feature.py:24: TypeError
+_____________ test_invalid_bounds_and_timezone_mismatch_are_clear ______________
+
+    def test_invalid_bounds_and_timezone_mismatch_are_clear():
+        with pytest.raises(ValueError):
+>           click.DateTime(min_value=datetime(2030, 1, 4), max_value=datetime(2030, 1, 2))
+E           TypeError: DateTime.__init__() got an unexpected keyword argument 'min_value'
+
+/tests/test_feature.py:34: TypeError
+=========================== short test summary info ============================
+FAILED ../tests/test_feature.py::test_bounds_are_inclusive_for_cli_strings - ...
+FAILED ../tests/test_feature.py::test_single_bound_applies_to_converted_datetimes
+FAILED ../tests/test_feature.py::test_invalid_bounds_and_timezone_mismatch_are_clear
+3 failed in 0.03s

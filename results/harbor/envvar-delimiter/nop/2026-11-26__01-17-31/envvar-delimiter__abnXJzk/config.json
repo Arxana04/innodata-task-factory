@@ -1,0 +1,15 @@
+{
+    "task": {
+        "path": "/Users/mahipatni/Antigravity/innodata-task-factory/tasks/envvar-delimiter"
+    },
+    "trial_name": "envvar-delimiter__abnXJzk",
+    "trials_dir": "/Users/mahipatni/Antigravity/innodata-task-factory/results/harbor/envvar-delimiter/nop/2026-11-26__01-17-31",
+    "agent": {
+        "name": "nop"
+    },
+    "environment": {
+        "type": "docker",
+        "delete": false
+    },
+    "job_id": "3e934a0c-b9d3-46b7-91cb-acc01e9e7ebd"
+}

@@ -1,0 +1,15 @@
+{
+    "task": {
+        "path": "/Users/mahipatni/Antigravity/innodata-task-factory/tasks/key-value-type"
+    },
+    "trial_name": "key-value-type__odf4Ks7",
+    "trials_dir": "/Users/mahipatni/Antigravity/innodata-task-factory/results/harbor/key-value-type/nop/2026-11-26__01-19-07",
+    "agent": {
+        "name": "nop"
+    },
+    "environment": {
+        "type": "docker",
+        "delete": false
+    },
+    "job_id": "bd1fd602-06a7-46cf-aaff-5b98f76a8f69"
+}

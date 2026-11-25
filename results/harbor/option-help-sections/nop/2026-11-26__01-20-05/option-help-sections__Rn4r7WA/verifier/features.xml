@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="2" time="0.114" timestamp="2026-11-25T19:50:12.681922+00:00" hostname="d8665aac4faa"><testcase classname="test_feature" name="test_default_and_custom_sections_keep_option_order" time="0.001"><failure message="TypeError: Parameter.__init__() got an unexpected keyword argument 'help_group'">def test_default_and_custom_sections_keep_option_order():
+        @click.command()
+        @click.option("--host", help_group="Network")
+        @click.option("--format", help_group="Output")
+&gt;       @click.option("--port", help_group="Network")
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+/tests/test_feature.py:9: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/click/decorators.py:374: in decorator
+    _param_memo(f, cls(param_decls, **attrs))
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;[AttributeError("'Option' object has no attribute 'name'") raised in repr()] Option object at 0xf4d917d71430&gt;
+param_decls = ('--port',), show_default = None, prompt = False
+confirmation_prompt = False, prompt_required = True, hide_input = False
+is_flag = None, flag_value = Sentinel.UNSET, multiple = False, count = False
+allow_from_autoenv = True, type = None, help = None, hidden = False
+show_choices = True, show_envvar = False, deprecated = False
+attrs = {'help_group': 'Network'}
+
+    def __init__(
+        self,
+        param_decls: cabc.Sequence[str] | None = None,
+        show_default: bool | str | None = None,
+        prompt: bool | str = False,
+        confirmation_prompt: bool | str = False,
+        prompt_required: bool = True,
+        hide_input: bool = False,
+        is_flag: bool | None = None,
+        flag_value: t.Any = UNSET,
+        multiple: bool = False,
+        count: bool = False,
+        allow_from_autoenv: bool = True,
+        type: types.ParamType[t.Any] | t.Any | None = None,
+        help: str | None = None,
+        hidden: bool = False,
+        show_choices: bool = True,
+        show_envvar: bool = False,
+        deprecated: bool | str = False,
+        **attrs: t.Any,
+    ) -&gt; None:
+&gt;       super().__init__(
+            param_decls,
+            type=type,
+            multiple=multiple,
+            deprecated=deprecated,
+            help=help,
+            **attrs,
+        )
+E       TypeError: Parameter.__init__() got an unexpected keyword argument 'help_group'
+
+src/click/core.py:3004: TypeError</failure></testcase><testcase classname="test_feature" name="test_hidden_and_positional_parameters_are_not_moved_to_groups" time="0.000"><failure message="TypeError: Parameter.__init__() got an unexpected keyword argument 'help_group'">def test_hidden_and_positional_parameters_are_not_moved_to_groups():
+        @click.command(add_help_option=False)
+        @click.argument("path", help="A local file.")
+        @click.option("--secret-label", hidden=True, help_group="Hidden group")
+&gt;       @click.option("--theme", help_group="Appearance")
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+/tests/test_feature.py:28: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/click/decorators.py:374: in decorator
+    _param_memo(f, cls(param_decls, **attrs))
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;[AttributeError("'Option' object has no attribute 'name'") raised in repr()] Option object at 0xf4d9172ac650&gt;
+param_decls = ('--theme',), show_default = None, prompt = False
+confirmation_prompt = False, prompt_required = True, hide_input = False
+is_flag = None, flag_value = Sentinel.UNSET, multiple = False, count = False
+allow_from_autoenv = True, type = None, help = None, hidden = False
+show_choices = True, show_envvar = False, deprecated = False
+attrs = {'help_group': 'Appearance'}
+
+    def __init__(
+        self,
+        param_decls: cabc.Sequence[str] | None = None,
+        show_default: bool | str | None = None,
+        prompt: bool | str = False,
+        confirmation_prompt: bool | str = False,
+        prompt_required: bool = True,
+        hide_input: bool = False,
+        is_flag: bool | None = None,
+        flag_value: t.Any = UNSET,
+        multiple: bool = False,
+        count: bool = False,
+        allow_from_autoenv: bool = True,
+        type: types.ParamType[t.Any] | t.Any | None = None,
+        help: str | None = None,
+        hidden: bool = False,
+        show_choices: bool = True,
+        show_envvar: bool = False,
+        deprecated: bool | str = False,
+        **attrs: t.Any,
+    ) -&gt; None:
+&gt;       super().__init__(
+            param_decls,
+            type=type,
+            multiple=multiple,
+            deprecated=deprecated,
+            help=help,
+            **attrs,
+        )
+E       TypeError: Parameter.__init__() got an unexpected keyword argument 'help_group'
+
+src/click/core.py:3004: TypeError</failure></testcase></testsuite></testsuites>

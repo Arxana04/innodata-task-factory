@@ -1,0 +1,15 @@
+{
+    "task": {
+        "path": "/Users/mahipatni/Antigravity/innodata-task-factory/tasks/exclusive-options"
+    },
+    "trial_name": "exclusive-options__S6SixCM",
+    "trials_dir": "/Users/mahipatni/Antigravity/innodata-task-factory/results/harbor/exclusive-options/nop/2026-11-26__01-18-20",
+    "agent": {
+        "name": "nop"
+    },
+    "environment": {
+        "type": "docker",
+        "delete": false
+    },
+    "job_id": "b0c154a0-3830-4ee5-990f-a50224e449b0"
+}

@@ -1,0 +1,17 @@
+{
+    "jobs_dir": "/Users/mahipatni/Antigravity/innodata-task-factory/results/harbor/key-value-type/nop",
+    "environment": {
+        "type": "docker",
+        "delete": false
+    },
+    "agents": [
+        {
+            "name": "nop"
+        }
+    ],
+    "tasks": [
+        {
+            "path": "/Users/mahipatni/Antigravity/innodata-task-factory/tasks/key-value-type"
+        }
+    ]
+}

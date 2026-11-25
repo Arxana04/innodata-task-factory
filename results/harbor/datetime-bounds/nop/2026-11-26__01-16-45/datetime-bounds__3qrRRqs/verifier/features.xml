@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="3" skipped="0" tests="3" time="0.029" timestamp="2026-11-25T19:46:52.881661+00:00" hostname="2636432984f1"><testcase classname="test_feature" name="test_bounds_are_inclusive_for_cli_strings" time="0.000"><failure message="TypeError: DateTime.__init__() got an unexpected keyword argument 'min_value'">def test_bounds_are_inclusive_for_cli_strings():
+        @click.command()
+&gt;       @click.option("--day", type=click.DateTime(
+            min_value=datetime(2030, 1, 2), max_value=datetime(2030, 1, 4)
+        ))
+E       TypeError: DateTime.__init__() got an unexpected keyword argument 'min_value'
+
+/tests/test_feature.py:10: TypeError</failure></testcase><testcase classname="test_feature" name="test_single_bound_applies_to_converted_datetimes" time="0.000"><failure message="TypeError: DateTime.__init__() got an unexpected keyword argument 'min_value'">def test_single_bound_applies_to_converted_datetimes():
+&gt;       lower = click.DateTime(min_value=datetime(2030, 1, 2))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: DateTime.__init__() got an unexpected keyword argument 'min_value'
+
+/tests/test_feature.py:24: TypeError</failure></testcase><testcase classname="test_feature" name="test_invalid_bounds_and_timezone_mismatch_are_clear" time="0.000"><failure message="TypeError: DateTime.__init__() got an unexpected keyword argument 'min_value'">def test_invalid_bounds_and_timezone_mismatch_are_clear():
+        with pytest.raises(ValueError):
+&gt;           click.DateTime(min_value=datetime(2030, 1, 4), max_value=datetime(2030, 1, 2))
+E           TypeError: DateTime.__init__() got an unexpected keyword argument 'min_value'
+
+/tests/test_feature.py:34: TypeError</failure></testcase></testsuite></testsuites>

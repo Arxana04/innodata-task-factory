@@ -1,0 +1,12 @@
+{
+    "jobs_dir": "/Users/mahipatni/Antigravity/innodata-task-factory/results/harbor/option-help-sections/oracle",
+    "environment": {
+        "type": "docker",
+        "delete": false
+    },
+    "tasks": [
+        {
+            "path": "/Users/mahipatni/Antigravity/innodata-task-factory/tasks/option-help-sections"
+        }
+    ]
+}

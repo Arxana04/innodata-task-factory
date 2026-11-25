@@ -1,0 +1,12 @@
+{
+    "task": {
+        "path": "/Users/mahipatni/Antigravity/innodata-task-factory/tasks/option-help-sections"
+    },
+    "trial_name": "option-help-sections__2kXiE7Y",
+    "trials_dir": "/Users/mahipatni/Antigravity/innodata-task-factory/results/harbor/option-help-sections/oracle/2026-11-26__01-20-30",
+    "environment": {
+        "type": "docker",
+        "delete": false
+    },
+    "job_id": "54a75361-8d86-4a61-849b-a08bc9d754f9"
+}

@@ -1,0 +1,6 @@
+=== STDOUT ===
+regressions: 123 passed, 0 failed, 0 skipped
+features: 1 passed, 2 failed, 0 skipped
+reward: 0.3333333333333333
+
+=== STDERR ===
