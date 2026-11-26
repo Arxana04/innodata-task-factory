@@ -1,0 +1,12 @@
+{
+    "task": {
+        "path": "/Users/mahipatni/Antigravity/innodata-task-factory/tasks/key-value-type"
+    },
+    "trial_name": "key-value-type__vunBoi8",
+    "trials_dir": "/Users/mahipatni/Antigravity/innodata-task-factory/results/harbor/key-value-type/oracle/2026-11-26__17-06-27",
+    "environment": {
+        "type": "docker",
+        "delete": false
+    },
+    "job_id": "9e6c12be-d4bc-4642-a9d5-06db1fb9f72c"
+}

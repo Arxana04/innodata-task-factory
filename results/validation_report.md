@@ -22,16 +22,16 @@ with strict network isolation (`network_mode = "no-network"`).
 
 | Task ID | Run Type | Agent | Features Passed | Regressions Passed | Reward | Duration | Status |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| `datetime-bounds` | `nop` | nop | 0/3 | 123/2 | **0.0** (exp: 0.0) | 23.45s | **PASS** |
-| `datetime-bounds` | `oracle` | oracle | 3/3 | 123/2 | **1.0** (exp: 1.0) | 23.63s | **PASS** |
-| `envvar-delimiter` | `nop` | nop | 0/3 | 4/3 | **0.0** (exp: 0.0) | 23.8s | **PASS** |
-| `envvar-delimiter` | `oracle` | oracle | 3/3 | 4/3 | **1.0** (exp: 1.0) | 25.51s | **PASS** |
-| `exclusive-options` | `nop` | nop | 0/3 | 3/3 | **0.0** (exp: 0.0) | 21.86s | **PASS** |
-| `exclusive-options` | `oracle` | oracle | 3/3 | 3/3 | **1.0** (exp: 1.0) | 24.35s | **PASS** |
-| `key-value-type` | `nop` | nop | 0/3 | 33/3 | **0.0** (exp: 0.0) | 30.55s | **PASS** |
-| `key-value-type` | `oracle` | oracle | 3/3 | 33/3 | **1.0** (exp: 1.0) | 27.59s | **PASS** |
-| `option-help-sections` | `nop` | nop | 0/2 | 3/3 | **0.0** (exp: 0.0) | 24.67s | **PASS** |
-| `option-help-sections` | `oracle` | oracle | 2/2 | 3/3 | **1.0** (exp: 1.0) | 27.08s | **PASS** |
+| `datetime-bounds` | `nop` | nop | 0/3 | 123/2 | **0.0** (exp: 0.0) | 22.54s | **PASS** |
+| `datetime-bounds` | `oracle` | oracle | 3/3 | 123/2 | **1.0** (exp: 1.0) | 21.5s | **PASS** |
+| `envvar-delimiter` | `nop` | nop | 0/3 | 4/3 | **0.0** (exp: 0.0) | 21.19s | **PASS** |
+| `envvar-delimiter` | `oracle` | oracle | 3/3 | 4/3 | **1.0** (exp: 1.0) | 21.87s | **PASS** |
+| `exclusive-options` | `nop` | nop | 0/3 | 3/3 | **0.0** (exp: 0.0) | 20.94s | **PASS** |
+| `exclusive-options` | `oracle` | oracle | 3/3 | 3/3 | **1.0** (exp: 1.0) | 21.53s | **PASS** |
+| `key-value-type` | `nop` | nop | 0/3 | 33/3 | **0.0** (exp: 0.0) | 20.97s | **PASS** |
+| `key-value-type` | `oracle` | oracle | 3/3 | 33/3 | **1.0** (exp: 1.0) | 21.35s | **PASS** |
+| `option-help-sections` | `nop` | nop | 0/2 | 3/3 | **0.0** (exp: 0.0) | 21.15s | **PASS** |
+| `option-help-sections` | `oracle` | oracle | 2/2 | 3/3 | **1.0** (exp: 1.0) | 21.39s | **PASS** |
 
 ---
 

@@ -1,0 +1,15 @@
+{
+    "task": {
+        "path": "/Users/mahipatni/Antigravity/innodata-task-factory/tasks/option-help-sections"
+    },
+    "trial_name": "option-help-sections__HwcdKXh",
+    "trials_dir": "/Users/mahipatni/Antigravity/innodata-task-factory/results/harbor/option-help-sections/nop/2026-11-26__17-06-48",
+    "agent": {
+        "name": "nop"
+    },
+    "environment": {
+        "type": "docker",
+        "delete": false
+    },
+    "job_id": "5984c6b4-e4ce-428a-a5c5-5931bbb7714d"
+}

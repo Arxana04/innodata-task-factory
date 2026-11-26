@@ -1,0 +1,120 @@
+{
+    "id": "f045d661-40e3-4b02-8769-d24d39fa332f",
+    "task_name": "option-help-sections",
+    "trial_name": "option-help-sections__HwcdKXh",
+    "trial_uri": "file:///Users/mahipatni/Antigravity/innodata-task-factory/results/harbor/option-help-sections/nop/2026-11-26__17-06-48/option-help-sections__HwcdKXh",
+    "task_id": {
+        "path": "/Users/mahipatni/Antigravity/innodata-task-factory/tasks/option-help-sections"
+    },
+    "source": null,
+    "task_checksum": "4fe0974a1a55d2f733b328c5ad34a3d369b6820916715216bc3fa1ba9fbdd263",
+    "config": {
+        "task": {
+            "path": "/Users/mahipatni/Antigravity/innodata-task-factory/tasks/option-help-sections",
+            "git_url": null,
+            "git_commit_id": null,
+            "name": null,
+            "ref": null,
+            "overwrite": false,
+            "download_dir": null,
+            "source": null
+        },
+        "trial_name": "option-help-sections__HwcdKXh",
+        "trials_dir": "/Users/mahipatni/Antigravity/innodata-task-factory/results/harbor/option-help-sections/nop/2026-11-26__17-06-48",
+        "install_only": false,
+        "timeout_multiplier": 1.0,
+        "agent_timeout_multiplier": null,
+        "verifier_timeout_multiplier": null,
+        "agent_setup_timeout_multiplier": null,
+        "environment_build_timeout_multiplier": null,
+        "agent": {
+            "name": "nop",
+            "import_path": null,
+            "model_name": null,
+            "base_url": null,
+            "model_api_key_name": null,
+            "model_api_format": null,
+            "skip_model_parsing": false,
+            "n_concurrent": null,
+            "concurrency_group": null,
+            "skills": [],
+            "override_timeout_sec": null,
+            "override_setup_timeout_sec": null,
+            "max_timeout_sec": null,
+            "resume_trajectory": false,
+            "load_trajectory": null,
+            "extra_allowed_hosts": [],
+            "kwargs": {},
+            "mcp_servers": []
+        },
+        "user_agent": null,
+        "environment": {
+            "type": "docker",
+            "import_path": null,
+            "force_build": false,
+            "delete": false,
+            "stream": false,
+            "cpu_enforcement_policy": "auto",
+            "memory_enforcement_policy": "auto",
+            "override_cpus": null,
+            "override_memory_mb": null,
+            "override_storage_mb": null,
+            "override_gpus": null,
+            "override_tpu": null,
+            "mounts": null,
+            "extra_docker_compose": [],
+            "kwargs": {},
+            "extra_allowed_hosts": []
+        },
+        "verifier": {
+            "override_timeout_sec": null,
+            "max_timeout_sec": null,
+            "disable": false
+        },
+        "artifacts": [],
+        "extra_instruction_paths": [],
+        "extra_instructions": [],
+        "job_id": "5984c6b4-e4ce-428a-a5c5-5931bbb7714d",
+        "source_trial": null
+    },
+    "agent_info": {
+        "name": "nop",
+        "version": "1.0.0",
+        "model_info": null
+    },
+    "agent_result": {
+        "n_input_tokens": null,
+        "n_cache_tokens": null,
+        "n_output_tokens": null,
+        "cost_usd": null,
+        "model_usage": null,
+        "rollout_details": null,
+        "metadata": null
+    },
+    "verifier_result": {
+        "rewards": {
+            "reward": 0.0
+        }
+    },
+    "verifier_environment_mode": "shared",
+    "exception_info": null,
+    "started_at": "2026-11-26T11:36:49.030484Z",
+    "finished_at": "2026-11-26T11:37:05.573669Z",
+    "environment_setup": {
+        "started_at": "2026-11-26T11:36:49.160175Z",
+        "finished_at": "2026-11-26T11:36:53.771352Z"
+    },
+    "agent_setup": {
+        "started_at": "2026-11-26T11:36:53.771466Z",
+        "finished_at": "2026-11-26T11:36:53.771535Z"
+    },
+    "agent_execution": {
+        "started_at": "2026-11-26T11:36:53.771650Z",
+        "finished_at": "2026-11-26T11:36:53.772807Z"
+    },
+    "verifier": {
+        "started_at": "2026-11-26T11:36:54.056955Z",
+        "finished_at": "2026-11-26T11:36:55.198507Z"
+    },
+    "step_results": null
+}

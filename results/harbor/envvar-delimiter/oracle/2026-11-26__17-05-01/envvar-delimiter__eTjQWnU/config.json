@@ -1,0 +1,12 @@
+{
+    "task": {
+        "path": "/Users/mahipatni/Antigravity/innodata-task-factory/tasks/envvar-delimiter"
+    },
+    "trial_name": "envvar-delimiter__eTjQWnU",
+    "trials_dir": "/Users/mahipatni/Antigravity/innodata-task-factory/results/harbor/envvar-delimiter/oracle/2026-11-26__17-05-01",
+    "environment": {
+        "type": "docker",
+        "delete": false
+    },
+    "job_id": "aa0388ec-8f06-4ede-9847-26a80f47d992"
+}
